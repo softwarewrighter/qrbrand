@@ -8,6 +8,9 @@ A personal vibe-coded Rust CLI tool for generating scannable QR codes with optio
 ![QR Code with logo example](images/this-repo-url-qrcode.png)
 *Example with logo overlay*
 
+![QR Code with alt text](images/qrbrand-alt-text.png)
+*Generated with: `qrbrand --url "https://github.com/softwarewrighter/qrbrand" --alt-text "The QR code can have alternate text"`*
+
 ## Features
 
 - Generate QR codes from URLs with high error correction
@@ -74,6 +77,15 @@ qrbrand --url "https://example.com" --image "logo.png" --logo-plate false
 qrbrand --url "https://example.com" --show-url
 ```
 
+### QR Code with Alternate Text
+
+```bash
+# Display custom text below the QR code
+qrbrand --url "https://example.com" --alt-text "Scan for more information"
+
+# Note: --show-url and --alt-text are mutually exclusive
+```
+
 ### Advanced Options
 
 ```bash
@@ -113,6 +125,7 @@ OPTIONS:
         --logo-plate <LOGO_PLATE>      Draw a white plate behind the logo for scan reliability [default: true]
         --logo-pad <LOGO_PAD>          Extra padding around the logo plate (fraction of logo size) [default: 0.18]
     -s, --show-url                     Render the URL as text below the QR code [default: false]
+    -a, --alt-text <ALT_TEXT>          Render alternate text below the QR code instead of the URL
     -h, --help                         Print help
 ```
 

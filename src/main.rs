@@ -44,8 +44,17 @@ struct Args {
     logo_pad: f32,
 
     /// Render the URL as text below the QR code.
-    #[arg(short = 's', long = "show-url", default_value_t = false)]
+    #[arg(
+        short = 's',
+        long = "show-url",
+        default_value_t = false,
+        conflicts_with = "alt_text"
+    )]
     show_url: bool,
+
+    /// Render alternate text below the QR code instead of the URL.
+    #[arg(short = 'a', long = "alt-text", conflicts_with = "show_url")]
+    alt_text: Option<String>,
 }
 
 fn main() -> Result<()> {
@@ -73,9 +82,11 @@ fn main() -> Result<()> {
         )?;
     }
 
-    // Optionally add URL text below QR by extending the canvas height.
+    // Optionally add text below QR by extending the canvas height.
     let final_img = if args.show_url {
         add_url_text_below(&qr_img, parsed.as_str())?
+    } else if let Some(alt_text) = &args.alt_text {
+        add_url_text_below(&qr_img, alt_text)?
     } else {
         qr_img
     };
@@ -466,5 +477,20 @@ mod tests {
         let invalid_url = "not-a-url";
         let parsed = Url::parse(invalid_url);
         assert!(parsed.is_err());
+    }
+
+    #[test]
+    fn test_alt_text_feature() {
+        // Test that add_url_text_below works with arbitrary text
+        let img = ImageBuffer::from_pixel(100, 100, Rgba([255, 255, 255, 255]));
+        let test_text = "Test Alt Text";
+
+        // This should not panic
+        let result = add_url_text_below(&img, test_text);
+        assert!(result.is_ok());
+
+        let extended_img = result.unwrap();
+        assert!(extended_img.height() > img.height());
+        assert_eq!(extended_img.width(), img.width());
     }
 }

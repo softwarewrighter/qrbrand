@@ -2,8 +2,8 @@
 
 ## Current Status Summary
 **Project**: qrbrand - QR code generation CLI tool  
-**Version**: v0.1.0  
-**Status**: ✅ Initial release complete, ready for enhancement  
+**Version**: v0.1.1  
+**Status**: ✅ New feature added: --alt-text option  
 **Last Updated**: 2026-02-07
 
 ## Quick Status
@@ -11,10 +11,12 @@
 ✅ LICENSE file added (MIT License)
 ✅ README.md updated with comprehensive documentation
 ✅ Clippy warnings fixed (1 warning resolved)
-✅ Unit tests added (5 tests passing)
+✅ Unit tests added (6 tests passing)
 ✅ Integration test structure created
 ✅ Architecture documentation created
 ✅ PRD, Design, Plan documentation created
+✅ New feature: --alt-text option added
+✅ Sample QR codes with alt text generated
 ```
 
 ## Detailed Status
@@ -38,6 +40,7 @@
 | Basic QR generation | ✅ Complete | URL to QR code |
 | Logo overlay | ✅ Complete | Center placement with white plate |
 | URL text rendering | ✅ Complete | Embedded DejaVuSans font |
+| Alternate text rendering | ✅ Complete | --alt-text option, mutually exclusive with --show-url |
 | CLI interface | ✅ Complete | clap with comprehensive options |
 | Error handling | ✅ Complete | anyhow with context |
 | File I/O | ✅ Complete | PNG output only |
@@ -70,7 +73,7 @@
 ### 4. Testing Status
 | Test Type | Status | Coverage |
 |-----------|--------|----------|
-| Unit Tests | ✅ 5 tests | Core utility functions |
+| Unit Tests | ✅ 6 tests | Core utility functions including alt text |
 | Integration Tests | ⚠️ 3 tests | Basic CLI functionality |
 | Property Tests | 🔲 None | Not implemented |
 | Performance Tests | 🔲 None | Not implemented |
@@ -82,6 +85,7 @@
 - `resize_fit()`: Image resizing
 - `draw_rect()`: Rectangle drawing
 - `url_validation()`: URL parsing
+- `alt_text_feature()`: Alternate text rendering
 
 **Test Gaps**:
 - Main QR generation pipeline
@@ -159,11 +163,14 @@ None
 1. ✅ Added LICENSE file with MIT License
 2. ✅ Updated README.md with comprehensive documentation
 3. ✅ Fixed clippy warning (unnecessary cast)
-4. ✅ Added 5 unit tests for utility functions
+4. ✅ Added 6 unit tests for utility functions (including alt text)
 5. ✅ Created integration test structure
 6. ✅ Created architecture documentation
 7. ✅ Created PRD, Design, Plan documentation
 8. ✅ Created this status document
+9. ✅ Added --alt-text feature with mutually exclusive --show-url
+10. ✅ Generated sample QR codes with alt text
+11. ✅ Updated all documentation
 
 #### Previous Work
 - Initial implementation of QR generation
