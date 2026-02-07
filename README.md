@@ -3,8 +3,10 @@
 A personal vibe-coded Rust CLI tool for generating scannable QR codes with optional logo overlays and URL text rendering.
 
 ![QR Code for this repository](images/qrbrand-qr.png)
-
 *Generated with: `qrbrand --url "https://github.com/softwarewrighter/qrbrand" --show-url`*
+
+![QR Code with logo example](images/this-repo-url-qrcode.png)
+*Example with logo overlay*
 
 ## Features
 
